@@ -20,6 +20,7 @@ angular.module('app', [
 
         // App views
         'app.views.home',
+        'app.views.login',
 
         // Components
 
@@ -52,9 +53,7 @@ angular.module('app', [
         'preferredLocale': 'he_HE'
     })
     .constant('APP_CONFIG', {
-        homeRoute: '/home',
-        serverPort : 5000,
-        productionServerHost : '104.155.49.192'
+        homeRoute: '/login'
     })
     .config(['$urlRouterProvider', '$translateProvider', '$mdThemingProvider', 'RestangularProvider', 'APP_CONFIG','ENV',
         function ($urlRouterProvider, $translateProvider, $mdThemingProvider, RestangularProvider, APP_CONFIG, ENV) {
@@ -87,7 +86,7 @@ angular.module('app', [
             $window.fbAsyncInit = function () {
                 // Executed when the SDK is loaded
                 FB.init({
-                    appId: '836437249818535',
+                    appId: '751373294999903',
                     cookie: true,  // enable cookies to allow the server to access
                                    // the session
                     xfbml: true,  // parse social plugins on this page

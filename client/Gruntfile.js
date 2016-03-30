@@ -4,7 +4,7 @@ module.exports = function (grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        distdir : 'dist',
+        distdir : '../server/app/assets/app',
         sass: {
             options: {
                 sourceMap: true
@@ -25,7 +25,7 @@ module.exports = function (grunt) {
                 },
             },
         },
-        'http-server': {
+/*        'http-server': {
             'dev': {
                 root: "app",
                 port: 8000,
@@ -35,7 +35,7 @@ module.exports = function (grunt) {
                 ext: "html",
                 openBrowser: true
             }
-        },
+        },*/
         shell: {
             startApiServer: {
                 command: 'python -m org.gi.server.server --mode dev',
@@ -78,18 +78,18 @@ module.exports = function (grunt) {
                 constants: {
                     ENV: {
                         name: 'dev',
-                        apiEndpoint: 'http://localhost:5000'
+                        apiEndpoint: 'http://localhost:1337'
                     }
                 }
             },
             production: {
                 options: {
-                    dest: 'dist/app/config.js'
+                    dest: '<%= distdir %>/config.js'
                 },
                 constants: {
                     ENV: {
                         name: 'production',
-                        apiEndpoint: 'http://test.getinvolved.org.il:5000'
+                        apiEndpoint: 'http://test.e-part-hw-app.herokuapp.com:1337'
                     }
                 }
             }
