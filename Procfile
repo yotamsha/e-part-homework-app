@@ -1,0 +1,1 @@
+web: cd server/app ; node .app.js
