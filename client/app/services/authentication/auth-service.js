@@ -52,11 +52,11 @@ angular.module('app.services.authentication.auth-service', [])
                     }
                 },
                 facebookSessionRetrieved: function (authResponse) {
-                    return $http.get(APP_CONFIG.serverHost +  "/login/fb_token/" + authResponse.accessToken)
+                    return $http.get(APP_CONFIG.apiBase +  "/login/fb_token/" + authResponse.accessToken)
                         .success(function (token) {
                             console.log(token);
                             setToken(token);
-                            return $http.get(APP_CONFIG.serverHost +  "/api/users/me")
+                            return $http.get(APP_CONFIG.apiBase +  "/api/users/me")
                                 .success(function (user) {
                                     storeUserCredentials(token, user);
                                     $rootScope.$broadcast(AUTH_EVENTS.authenticationCompleted,authModel.userSession);
@@ -96,7 +96,7 @@ angular.module('app.services.authentication.auth-service', [])
                     var token = window.localStorage.getItem(LOCAL_TOKEN_KEY);
                     if (token) {
                         setToken(token);
-                        $http.get(APP_CONFIG.serverHost +  "/api/users/me")
+                        $http.get(APP_CONFIG.apiBase +  "/api/users/me")
                             .success(function (user) {
                                 storeUserCredentials(null, user);
                                 deferred.resolve(authModel.userSession);

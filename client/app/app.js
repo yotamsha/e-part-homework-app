@@ -53,13 +53,14 @@ angular.module('app', [
         'preferredLocale': 'he_HE'
     })
     .constant('APP_CONFIG', {
-        homeRoute: '/login'
+        homeRoute: '/login',
+        apiBase : 'api/v1'
     })
     .config(['$urlRouterProvider', '$translateProvider', '$mdThemingProvider', 'RestangularProvider', 'APP_CONFIG','ENV',
         function ($urlRouterProvider, $translateProvider, $mdThemingProvider, RestangularProvider, APP_CONFIG, ENV) {
             var serverHost = ENV.apiEndpoint;
-            console.log("using server host: " + serverHost)
-            RestangularProvider.setBaseUrl(serverHost + '/api');
+            //console.log("using server host: " + serverHost)
+            RestangularProvider.setBaseUrl(APP_CONFIG.apiBase);
             APP_CONFIG.serverHost = serverHost;
             $mdThemingProvider.theme('default')
                 .primaryPalette('cyan')

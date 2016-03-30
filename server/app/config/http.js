@@ -8,7 +8,7 @@
  * For more information on configuration, check out:
  * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.http.html
  */
-
+//var express = require('express');
 module.exports.http = {
 
   /****************************************************************************
@@ -58,6 +58,12 @@ module.exports.http = {
     //     console.log("Requested :: ", req.method, req.url);
     //     return next();
     // }
+
+/*  customMiddleware: function (app) {
+    //app.use(express.logger());
+    //app.use(sails.hooks.http.app.compress());
+    app.use('/', sails.config.http.static(process.cwd() + '/../assets/app/'));
+  }*/
 
 
   /***************************************************************************
