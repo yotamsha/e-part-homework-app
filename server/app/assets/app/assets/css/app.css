@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'Yed';
+  src: url("../fonts/Yed SemiComebackReg.otf");
+  /* IE9 Compat Modes */
+  src: url("../fonts/Yed SemiComebackReg.otf?#iefix") format("truetype"), url("../fonts/Yed SemiComebackReg.ttf") format("truetype"); }
+
+html, body {
+  height: auto; }
+
+body {
+  min-width: 320px;
+  font-family: 'Yed', 'arial';
+  font-weight: normal;
+  color: #666666;
+  font-size: 12px; }
+
+.fb-button {
+  width: 170px;
+  height: 50px;
+  cursor: pointer;
+  background-image: url("../img/fb-login-button-he.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+/*# sourceMappingURL=app.css.map */

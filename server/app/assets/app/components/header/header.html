@@ -1,0 +1,60 @@
+<div class="header" layout="column">
+  <div class="nav-bar" layout="row" hide show-gt-sm>
+    <div class="logo"></div>
+    <div ng-repeat="route in ctrl.headerLinks" ng-hide="(route.hide && route.hide()) || route.showAsPrimaryLinkInMobileOnly ">
+      <div class="route-link" ng-class="ctrl.navClass(route)">
+        <!-- Regular link -->
+        <a ng-click="ctrl.handleMenuClick(route)" ng-hide="route.isMenu"> {{route.routeText | translate}}</a>
+        <!-- Link with sub-menu -->
+        <md-menu md-position-mode="target-right target" md-offset="0 35" ng-hide="(route.hide &&route.hide()) || !route.isMenu">
+          <a md-menu-origin ng-click="$mdOpenMenu($event)">
+            {{ctrl.getRouteText(route)}}
+          </a>
+          <md-menu-content width="1">
+            <md-menu-item ng-repeat="menuItem in route.menuItems">
+              <md-button  md-menu-align-target
+                         ng-click="menuItem.clickHandler()">
+                {{ctrl.getRouteText(menuItem)}}
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+      </div>
+    </div>
+  </div>
+  <div class="small-nav-bar" layout="row" layout-align="space-between center" hide show-sm show-xs>
+    <div class="hamburger-icon" ng-click="ctrl.toggleSideNav()"></div>
+    <div class="logo"></div>
+  </div>
+  <div class="backdrop" ng-show="ctrl.isSideNavOpen" hide show-sm show-xs></div>
+  <div class="side-nav-menu" ng-show="ctrl.isSideNavOpen" hide show-sm show-xs>
+      <ul>
+        <li ng-repeat="route in ctrl.headerLinks" ng-hide="route.hide && route.hide()" ng-class="ctrl.navClass(route)" class="side-nav-option route-link ">
+            <a ng-click="ctrl.handleMenuClick(route)"> {{ctrl.getRouteText(route)}}</a>
+        </li>
+      </ul>
+  </div>
+  <div layout="row" flex layout-align="center start">
+    <div flex layout="column" layout-align="start center">
+      <div class="header-title"> {{ ctrl.headerAttributes.title | translate}} </div>
+      <div class="header-subtitle"> {{ ctrl.headerAttributes.subTitle | translate}} </div>
+      <button class="header-btn" ng-show='ctrl.headerAttributes.shouldShowButton' ng-click='ctrl.onHeaderButtonClick()'>
+        {{"views.main.header.how_it_works_button" | translate}}
+      </button>
+    </div>
+  </div>
+</div>
+<div class="how-it-works-section" layout="row" layout-wrap ng-if="ctrl.showHowItWorksSection" class="how-it-works-section">
+  <div ng-repeat="link in ctrl.howItWorksLinks" class="how-it-works-link" flex-gt-sm="33" flex-sm="100" flex-xs="100">
+    <a ng-href="#{{ link.url }}">
+      <img ng-src="{{ link.imageUrl }}">
+      <div class="orange-bubble small"></diV>
+      <h5 class="title">
+        {{ link.title | translate }}
+      </h5>
+      <h6 class="subtitle">
+        {{ link.subtitle | translate }}
+      </h6>
+    </a>
+  </div>
+</div>
