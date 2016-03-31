@@ -71,10 +71,17 @@ angular.module('app.services.authentication.auth-service', [])
                 },
                 login: function () {
                     var _self = this;
-                    FB.getLoginStatus(function (response) {
+/*                    FB.getLoginStatus(function (response) {
                         _self.statusChangeCallback(response);
-                    });
+                    });*/
+                  $http.get(APP_CONFIG.serverHost +  "/auth/login").then(function(result){
+                    // success
+                    console.log("Login response", result);
+                  }, function(error){
+                    // error
+                    console.log("Login error", error);
 
+                  });
 
                 },
                 logout: function () {

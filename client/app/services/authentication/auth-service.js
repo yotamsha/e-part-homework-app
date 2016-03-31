@@ -4,8 +4,10 @@
 'use strict';
 
 angular.module('app.services.authentication.auth-service', [])
-    .service('AuthService', ['Restangular', '$rootScope', '$cookieStore', '$http', 'USER_ROLES', '$q', 'AUTH_EVENTS','USER_ACTIONS','APP_CONFIG',
-        function (Restangular, $rootScope, $cookieStore, $http, USER_ROLES, $q, AUTH_EVENTS, USER_ACTIONS, APP_CONFIG) {
+    .service('AuthService', ['Restangular', '$rootScope', '$cookieStore', '$http',
+        'USER_ROLES', '$q', 'AUTH_EVENTS','USER_ACTIONS','APP_CONFIG','$location',
+        function (Restangular, $rootScope, $cookieStore, $http,
+                  USER_ROLES, $q, AUTH_EVENTS, USER_ACTIONS, APP_CONFIG, $location) {
             var LOCAL_TOKEN_KEY = "AUTH-TOKEN";
             var authModel = {
                 isAuthenticated: false,
@@ -68,23 +70,8 @@ angular.module('app.services.authentication.auth-service', [])
                         }).error(function (error) {
                             console.log(error);
                         })
-                },
-                login: function () {
-                    var _self = this;
-                    FB.getLoginStatus(function (response) {
-                        _self.statusChangeCallback(response);
-                    });
-
-
-                },
-                logout: function () {
-                    var _self = this;
-                    FB.logout(function (response) {
-                        $rootScope.$apply(function () {
-                            destroyUserCredentials();
-                        });
-                    });
                 }
+
             };
 
             function loadUserCredentials() {
@@ -137,6 +124,7 @@ angular.module('app.services.authentication.auth-service', [])
                 authModel.userSession = null;
                 $http.defaults.headers.common['Authorization'] = undefined;
                 window.localStorage.removeItem(LOCAL_TOKEN_KEY);
+
             }
 
             function isAuthorized(authorizedRoles) {
@@ -204,7 +192,17 @@ angular.module('app.services.authentication.auth-service', [])
                  * returns an array with all the missing user fields for a given action.
                  */
                 logout: function () {
-                    destroyUserCredentials();
+                    return $http.post(APP_CONFIG.apiBase + "/auths/logout").then(function (result) {
+                        // success
+                        console.log("logout response", result);
+                        $location.path("/login");
+
+                    }, function (error) {
+                        // error
+                        console.log("logout error", error);
+
+                    });
+                    //destroyUserCredentials();
                 },
                 login: function (type) {
                     switch(type){

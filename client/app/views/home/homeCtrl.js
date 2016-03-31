@@ -10,8 +10,11 @@ angular.module('app.views.home', ['app.vendors.momentjs'])
             });
     }])
 
-    .controller('homeCtrl', ['$scope',
-        function ($scope) {
+    .controller('homeCtrl', ['$scope','AuthService',
+        function ($scope,AuthService) {
             var vm = this;
+            $scope.logout = function(){
+                AuthService.logout();
+            };
         }
     ]);

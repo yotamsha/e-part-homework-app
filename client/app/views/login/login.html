@@ -1,5 +1,8 @@
 <div id="container" layout-margin layout-align="space-around center">
 {{"views.home.signup" | translate}}
-
-    <div class="row fb-button" ng-click="fbLogin()"></div>
+    <a href="/api/v1/auths/login">login</a>
+    <div class="row fb-btn" ng-click="fbLogin()"></div>
+<!--
+    https://graph.facebook.com/'.$fid.'/picture?type=large
+-->
 </div>
