@@ -25,9 +25,8 @@ angular.module('app', [
         // Components
 
         // Models
-/*
-        'app.models.case',
-*/
+        'app.models.user',
+        'app.models.site',
 
         // Services
         'app.services.data-access',
@@ -50,18 +49,18 @@ angular.module('app', [
             'he_HE': 'עברית',
             'en_US': 'English'
         },
-        'preferredLocale': 'he_HE'
+        'preferredLocale': 'en_US'
     })
     .constant('APP_CONFIG', {
         homeRoute: '/login',
         apiBase : 'api/v1'
     })
-    .config(['$urlRouterProvider', '$translateProvider', '$mdThemingProvider', 'RestangularProvider', 'APP_CONFIG','ENV',
-        function ($urlRouterProvider, $translateProvider, $mdThemingProvider, RestangularProvider, APP_CONFIG, ENV) {
+    .config(['$urlRouterProvider', '$translateProvider', '$mdThemingProvider', 'RestangularProvider', 'APP_CONFIG','LOCALES',
+        function ($urlRouterProvider, $translateProvider, $mdThemingProvider, RestangularProvider, APP_CONFIG, LOCALES) {
             //console.log("using server host: " + serverHost)
             RestangularProvider.setBaseUrl(APP_CONFIG.apiBase);
             $mdThemingProvider.theme('default')
-                .primaryPalette('cyan')
+                .primaryPalette('light-blue')
                 .accentPalette('orange');
 
             // i18n setup based on: https://scotch.io/tutorials/internationalization-of-angularjs-applications
@@ -69,7 +68,7 @@ angular.module('app', [
                 prefix: 'resources/locale-',// path to translations files
                 suffix: '.json'// suffix, currently- extension of the translations
             });
-            $translateProvider.preferredLanguage('he_HE');// is applied on first load // yak: todo: USE CONSTANT?
+            $translateProvider.preferredLanguage(LOCALES.preferredLocale);// is applied on first load
             $translateProvider.useLocalStorage();// saves selected language to localStorage
             // App routing is using ui-router module - https://github.com/angular-ui/ui-router
             $urlRouterProvider.otherwise(APP_CONFIG.homeRoute);
@@ -77,9 +76,8 @@ angular.module('app', [
         }])
     .run(['moment', '$http', '$rootScope', 'AuthService', '$window', function (moment, $http, $rootScope, AuthService, $window) {
 
-        facebookInit();
-        moment.locale('he');
-
+        //facebookInit();
+/*
         function facebookInit() {
 
             $window.fbAsyncInit = function () {
@@ -102,5 +100,5 @@ angular.module('app', [
                 js.src = "//connect.facebook.net/en_US/sdk.js";
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
-        }
+        }*/
     }]);

@@ -1,0 +1,41 @@
+.home-container {
+  height: 650px;
+  a {
+    color : $primary-color;
+  }
+  .site-form {
+    .url-input-container {
+      margin: 0px;
+      width: 80%;
+    }
+    .form-button {
+      height: 30px;
+      margin-left: 40px;
+      margin-top: 31px;
+      background-color: $primary-color !important;
+      color: #ffffff !important;
+      &[disabled] {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .users-sidenav {
+    #logo {
+      background-image: url("http://static.epart.co.il/wp-content/themes/epart/css/images/logo.png");
+      height: 50px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+    }
+    md-toolbar {
+      background-color: $primary-color;
+
+    }
+    .item-text {
+      font-size: 16px;
+      padding-top: 9px;
+    }
+    height: 100%;
+  }
+}

@@ -1,3 +1,12 @@
 {
-  "views.home.title": "Home Title!"
+  "text" : "my text",
+  "views" : {
+    "general" : {
+      "save" : "Save"
+    },
+    "home" : {
+      "title" : "Home"
+    }
+  }
+
 }
