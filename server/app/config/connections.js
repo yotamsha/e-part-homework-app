@@ -56,14 +56,14 @@ module.exports.connections = {
   * Run: npm install sails-mongo                                             *
   *                                                                          *
   ***************************************************************************/
-  localMongo: {
+/*  localMongo: {
     adapter: 'sails-mongo',
     host: 'localhost',
     port: 27017,
     // user: 'username',
     // password: 'password',
     database: 'epart'
-  },
+  },*/
   prodMongo: {
     adapter: 'sails-mongo',
     host: 'ds011820.mlab.com',
@@ -82,14 +82,14 @@ module.exports.connections = {
   *                                                                          *
   *                                                                          *
   ***************************************************************************/
-  production_postgres_db: {
+/*  production_postgres_db: {
     adapter: 'sails-postgresql',
     host: 'ec2-23-21-157-223.compute-1.amazonaws.com',
     user: 'mvvroutogbzueg',
     password: 'RowrkllDS7SyeMPICagELRETn9',
     database: 'deja64lofrhlve',
     ssl :true
-  }
+  }*/
 
   /***************************************************************************
   *                                                                          *
