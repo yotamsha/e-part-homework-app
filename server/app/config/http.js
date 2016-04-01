@@ -61,7 +61,7 @@ module.exports.http = {
 
     customMiddleware: function (app) {
 
-        var express = require('sails/node_modules/express');
+        var express = require('express');
 
         // We're in the config dir now, so we have to back up
         // one directory to get to the app root
