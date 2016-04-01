@@ -8,20 +8,22 @@ angular.module('app.views.home', [])
             templateUrl: 'views/home/home.html',
             controller: 'homeCtrl',
             resolve : {
-                user : ['AuthService','$location', function(AuthService, $location){
-                    return AuthService.isAuthenticated().then(function(){
-                        return true;
+                user : ['AuthService','$location','$q', function(AuthService, $location, $q){
+                    var deferred = $q.defer();
+                    AuthService.isAuthenticated().then(function(){
+                        deferred.resolve();
                     }, function(){
                         // Not authenticated
                         $location.path('/login');
+                        //deferred.reject();
                     });
+                    return deferred.promise;
                 }]
             }
         });
     }])
     .controller('homeCtrl', ['$scope', 'AuthService', 'UserDao', 'SiteDao', '$q',
         function ($scope, AuthService, UserDao, SiteDao, $q) {
-            var vm = this;
 
             function _getSiteOwner(users, ownerId) {
                 return _.findWhere(users, {id: ownerId}).name;
@@ -63,9 +65,14 @@ angular.module('app.views.home', [])
                 SiteDao.create($scope.vm.newSite).then(
                     function (response) {
                         // success
-                        response.ownerName = _getSiteOwner($scope.vm.users, response.owner);
+                        var siteToAdd = response;
+                        siteToAdd.ownerName = _getSiteOwner($scope.vm.users, response.owner);
+                        siteToAdd.owner = {
+                            id : response.owner
+                        };
+
+                        $scope.vm.sites.unshift(siteToAdd);
                         $scope.vm.newSite = {};
-                        $scope.vm.sites.unshift(response);
                         $scope.siteForm.$setPristine();
                         $scope.siteForm.$setUntouched()
                     }, function (response) {
@@ -84,9 +91,12 @@ angular.module('app.views.home', [])
             $scope.userSelected = function (user) {
                 $scope.vm.selecteUserId = user.id;
                 for (var i = 0; i < $scope.vm.users.length; i++){
-                    $scope.vm.users[i].selected = false;
+                    if ($scope.vm.users[i].id === user.id){
+                        $scope.vm.users[i].selected = true;
+                    } else {
+                        $scope.vm.users[i].selected = false;
+                    }
                 }
-                user.selected = true;
             };
             /**
              *
@@ -94,7 +104,7 @@ angular.module('app.views.home', [])
              * @returns {*|boolean} true if site's owner is selected.
              */
             $scope.isSelected = function (site) {
-               return site.owner && (site.owner.id === $scope.vm.selecteUserId)
+               return $scope.vm.selecteUserId && site.owner && (site.owner.id === $scope.vm.selecteUserId)
             };
 
 
