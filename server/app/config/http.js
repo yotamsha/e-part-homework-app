@@ -67,6 +67,9 @@ module.exports.http = {
         // one directory to get to the app root
         if (sails.config.environment === "development"){
           app.use('/', express.static(__dirname + '/../../../client/app'));
+        } else {
+          app.use('/', express.static(__dirname + '/../assets/app'));
+
         }
     }
 
