@@ -1,22 +1,29 @@
 $primary-color : #008094;
 
 @font-face {
-  font-family: 'Yed';
-  src: url('../fonts/Yed SemiComebackReg.otf'); /* IE9 Compat Modes */
-  src: url('../fonts/Yed SemiComebackReg.otf?#iefix') format('truetype'), /* IE6-IE8 */
-  url('../fonts/Yed SemiComebackReg.ttf')  format('truetype'), /* Safari, Android, iOS */
-}
+  font-family: 'Myriad Pro';
+  src: url("../fonts/MyriadPro-Regular.otf") format("embedded-opentype"), url("../fonts/MyriadPro-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Myriad Pro";
+  src: url("../fonts/MyriadPro-Bold.otf") format("embedded-opentype"), url("../fonts/MyriadPro-Bold.ttf") format("truetype");
+  font-weight: bold; }
 
 html, body {
   height: auto;
 }
 
 body {
+  font-family: Myriad Pro, Arial, "Myriad Pro", "Arial", "Helvetica", "Helvetica Neue", sans-serif;
   min-width: 1024px;
-  font-family: 'Yed', 'arial';
   font-weight: normal;
   color : #666666;
   background-color: #F5F5F5;
   font-size: 12px;
   overflow: hidden;
+}
+.md-button {
+  text-transform: inherit ;
 }

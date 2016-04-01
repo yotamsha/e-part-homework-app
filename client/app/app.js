@@ -29,11 +29,9 @@ angular.module('app', [
         'app.models.site',
 
         // Services
-        'app.services.data-access',
         'app.services.language-service',
-        'app.services.dialogs-service',
         'app.services.authentication.auth-service',
-        'app.services.interceptors',
+
 
         // 3rd-Party Wrappers - We wrap 3rd party libraries that aren't angular modules in order
         // to keep the global window clean. Only these libraries are accessible through a single variable: window._thirdParty
@@ -52,7 +50,7 @@ angular.module('app', [
         'preferredLocale': 'en_US'
     })
     .constant('APP_CONFIG', {
-        homeRoute: '/login',
+        homeRoute: '/home',
         apiBase : 'api/v1'
     })
     .config(['$urlRouterProvider', '$translateProvider', '$mdThemingProvider', 'RestangularProvider', 'APP_CONFIG','LOCALES',

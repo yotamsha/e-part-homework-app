@@ -53,6 +53,12 @@ angular.module('app.models.site', [])
                 });
         }
 
+        /**
+         * post a request to create a new site.
+         * @param site
+         * @returns {*}
+         * @private
+         */
         function _create(site) {
             return collectionDAO.post(site);
 

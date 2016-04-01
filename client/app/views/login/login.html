@@ -1,8 +1,14 @@
-<div id="container" layout-margin layout-align="space-around center">
-{{"views.home.signup" | translate}}
-    <a href="/api/v1/auths/login">login</a>
-    <div class="row fb-btn" ng-click="fbLogin()"></div>
-<!--
-    https://graph.facebook.com/'.$fid.'/picture?type=large
--->
+<div class="login-page">
+    <md-card class="login-dialog-container">
+        <md-card-title>
+            <div class="app-logo"></div>
+        </md-card-title>
+        <md-card-content layout-align="center center" >
+                <a  href="/api/v1/auths/login">
+                    <div class="fb-btn"></div>
+                </a>
+        </md-card-content>
+
+    </md-card>
+
 </div>

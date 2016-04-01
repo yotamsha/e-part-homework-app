@@ -21,6 +21,13 @@ angular.module('app.models.user', [])
         var modelName = 'users';
         var collectionDAO = Restangular.all(modelName);
 
+        /**
+         * Maps a user object from server object to view model object.
+         * if object is not valid, returns null.
+         * @param user - server object
+         * @returns {*}
+         * @private
+         */
         function _mapToVM(user) {
             if (user.auth){
                 return {
@@ -34,6 +41,11 @@ angular.module('app.models.user', [])
 
         }
 
+        /**
+         * Gets all users and maps them to view model objects.
+         * @returns {*}
+         * @private
+         */
         function _getAll() {
             return collectionDAO
                 .getList()

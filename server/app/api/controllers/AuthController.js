@@ -9,10 +9,13 @@
  */
 
 module.exports = require('waterlock').waterlocked({
-  /* e.g.
-    action: function(req, res){
-  
+  /**
+   *
+   * @param req
+   * @param res
+     */
+    isAuthenticated: function(req, res){
+
     }
-  */
 
 });

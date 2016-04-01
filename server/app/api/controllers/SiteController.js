@@ -35,7 +35,7 @@ module.exports = {
         Site.create(newSite).then(function(response){
           res.json(201, response);
         },function(){
-          res.json(500, {error : "Could not save the new Site object."});
+          res.json(500, {error : "Could not save the new site data."});
 
         });
 
