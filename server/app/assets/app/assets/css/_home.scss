@@ -1,0 +1,57 @@
+.home-container {
+  .header {
+    color: $primary-color;
+    margin: 8px;
+    .logout-btn {
+      font-size: 18px;
+      margin-right: 24px;
+    }
+  }
+  .selected {
+    background-color: rgba(249, 245, 4, 0.35);
+  }
+  height: 650px;
+  a {
+    color : $primary-color;
+  }
+  .site-form {
+    .url-input-container {
+      margin: 0px;
+      width: 80%;
+    }
+    .form-button {
+      height: 30px;
+      margin-left: 40px;
+      margin-top: 31px;
+      background-color: $primary-color !important;
+      color: #ffffff !important;
+      &[disabled] {
+        opacity: 0.5;
+      }
+    }
+    .error-msg-container {
+      height: 7px;
+      margin-left: 4px;
+      color: rgb(221,44,0);
+    }
+  }
+
+  .users-sidenav {
+    #logo {
+      background-image: url("../img/logo.png");
+      height: 50px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+    }
+    md-toolbar {
+      background-color: $primary-color;
+
+    }
+    .item-text {
+      font-size: 16px;
+      padding-top: 9px;
+    }
+    height: 100%;
+  }
+}
