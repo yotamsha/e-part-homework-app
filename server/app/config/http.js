@@ -65,7 +65,9 @@ module.exports.http = {
 
         // We're in the config dir now, so we have to back up
         // one directory to get to the app root
-        app.use('/', express.static(__dirname + '/../../../client/app'));
+        if (sails.config.environment === "development"){
+          app.use('/', express.static(__dirname + '/../../../client/app'));
+        }
     }
 
     /***************************************************************************

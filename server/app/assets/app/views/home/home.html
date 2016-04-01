@@ -1,5 +1,78 @@
-<div id="container" layout-margin layout-align="space-around center">
-{{"views.home.title" | translate}}
 
-    <div class="row fb-button" ng-click="fbLogin()"></div>
-</div>
+<section flex class="home-container" layout="row">
+    <!-- SIDE BAR - USERS LIST -->
+    <md-sidenav
+            class="md-sidenav-left users-sidenav"
+            md-component-id="left"
+            md-disable-backdrop
+            md-is-locked-open="true"
+            md-whiteframe="4">
+        <md-toolbar>
+            <div id="logo"></div>
+        </md-toolbar>
+        <md-content layout-padding>
+            <md-list flex>
+                <md-list-item ng-repeat="user in vm.users" class="md-1-line" ng-class="{selected : user.selected}" ng-click="userSelected(user)">
+                    <div class="md-list-item-text" layout="row">
+                        <img class="md-avatar" ng-src="{{user.imgSrc}}"/>
+                        <div class="item-text"> {{user.name}}</div>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </md-sidenav>
+
+    <md-content flex style="background-color: #F5F5F5">
+        <!-- HEADER -->
+        <div layout="row" layout-align="end center" class="header">
+            <div class="user-label">{{ vm.loggedUser.name }}</div>
+            <md-button class="md-primary" ng-click="logout()">Log Out</md-button>
+        </div>
+        <!-- NEW SITE FORM -->
+        <md-card>
+            <md-card-content>
+                <form name="siteForm" layout="column" class="site-form">
+                    <div layout="row">
+                        <md-input-container class="form-input-container url-input-container">
+                            <label>Enter Site URL</label>
+                            <input name="siteUrl" required type="text" ng-pattern="/(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})/" ng-model="vm.newSite.url">
+                            <div ng-messages="siteForm.siteUrl.$error" role="alert" multiple>
+                                <div ng-message="required" class="my-message">You must supply a site URL.</div>
+                                <div ng-message="pattern" class="my-message">URL is invalid.</div>
+                            </div>
+                        </md-input-container>
+                        <md-button ng-disabled="!siteForm.$valid"
+                                   class="md-raised md-primary form-button"
+                                   ng-click="saveSiteUrl()" >
+                            {{"views.general.save" | translate}}
+                        </md-button>
+
+                    </div>
+                    <div layout="row" class="error-msg-container">
+                        <div ng-show="vm.errorMsg" class="server-error">Server Error: {{ vm.errorMsg }}</div>
+                    </div>
+
+                </form>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-content>
+                <md-list flex>
+                    <!-- SITES LIST -->
+                    <md-list-item ng-repeat="site in vm.sites" class="md-3-line" ng-class="{selected : isSelected(site)}"  ng-click="null">
+                        <div class="md-list-item-text" layout="column">
+                            <h3>{{ site.title }}</h3>
+                            <a href="{{site.url}}">{{site.url}}</a>
+                            <p>{{site.ownerName}}</p>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </md-card-content>
+        </md-card>
+
+    </md-content>
+</section>
+
+
+
+

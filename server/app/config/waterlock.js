@@ -13,7 +13,7 @@ module.exports.waterlock = {
   //
   // used by auth methods for callback URI's using oauth and for password
   // reset links.
-  baseUrl: process.env.BASE_URL || 'http://test.e-part-hw-app.herokuapp.com:1337/api/v1',
+  baseUrl: process.env.BASE_URL || 'http://e-part-hw-app.herokuapp.com/api/v1',
 
   // Auth Method(s)
   //

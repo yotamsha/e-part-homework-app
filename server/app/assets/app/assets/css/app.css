@@ -1,26 +1,104 @@
 @font-face {
-  font-family: 'Yed';
-  src: url("../fonts/Yed SemiComebackReg.otf");
-  /* IE9 Compat Modes */
-  src: url("../fonts/Yed SemiComebackReg.otf?#iefix") format("truetype"), url("../fonts/Yed SemiComebackReg.ttf") format("truetype"); }
+  font-family: 'Myriad Pro';
+  src: url("../fonts/MyriadPro-Regular.otf") format("embedded-opentype"), url("../fonts/MyriadPro-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Myriad Pro";
+  src: url("../fonts/MyriadPro-Bold.otf") format("embedded-opentype"), url("../fonts/MyriadPro-Bold.ttf") format("truetype");
+  font-weight: bold; }
 
 html, body {
   height: auto; }
 
 body {
-  min-width: 320px;
-  font-family: 'Yed', 'arial';
+  font-family: Myriad Pro, Arial, "Myriad Pro", "Arial", "Helvetica", "Helvetica Neue", sans-serif;
+  min-width: 1024px;
   font-weight: normal;
   color: #666666;
-  font-size: 12px; }
+  background-color: #F5F5F5;
+  font-size: 12px;
+  overflow: hidden; }
 
-.fb-button {
-  width: 170px;
-  height: 50px;
-  cursor: pointer;
-  background-image: url("../img/fb-login-button-he.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center; }
+.md-button {
+  text-transform: inherit; }
+
+.login-page {
+  background-color: #F5F5F5;
+  min-height: 700px; }
+  .login-page .login-dialog-container {
+    /* center the box */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 375px;
+    width: 300px;
+    /*
+    background-color: $primary-color;
+    */ }
+    .login-page .login-dialog-container md-card-title {
+      background-color: #008094; }
+      .login-page .login-dialog-container md-card-title .app-logo {
+        background-image: url("../img/logo.png");
+        height: 56px;
+        width: 139px;
+        background-size: contain;
+        background-repeat: no-repeat; }
+    .login-page .login-dialog-container md-card-content {
+      height: 255px; }
+    .login-page .login-dialog-container .fb-btn {
+      /*
+      width: 170px;
+      */
+      height: 50px;
+      margin-top: 100px;
+      cursor: pointer;
+      background-image: url("../img/fb-login-button.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center; }
+
+.home-container {
+  height: 650px; }
+  .home-container .header {
+    color: #008094;
+    margin: 8px; }
+    .home-container .header .logout-btn {
+      font-size: 18px;
+      margin-right: 24px; }
+  .home-container .selected {
+    background-color: rgba(249, 245, 4, 0.35); }
+  .home-container a {
+    color: #008094; }
+  .home-container .site-form .url-input-container {
+    margin: 0px;
+    width: 80%; }
+  .home-container .site-form .form-button {
+    height: 30px;
+    margin-left: 40px;
+    margin-top: 31px;
+    background-color: #008094 !important;
+    color: #ffffff !important; }
+    .home-container .site-form .form-button[disabled] {
+      opacity: 0.5; }
+  .home-container .site-form .error-msg-container {
+    height: 7px;
+    margin-left: 4px;
+    color: #dd2c00; }
+  .home-container .users-sidenav {
+    height: 100%; }
+    .home-container .users-sidenav #logo {
+      background-image: url("../img/logo.png");
+      height: 50px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center; }
+    .home-container .users-sidenav md-toolbar {
+      background-color: #008094; }
+    .home-container .users-sidenav .item-text {
+      font-size: 16px;
+      padding-top: 9px; }
 
 /*# sourceMappingURL=app.css.map */

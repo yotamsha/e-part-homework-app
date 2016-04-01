@@ -4,10 +4,9 @@
 angular.module('app.common.constants', [])
 
     .constant('AUTH_EVENTS', {
-        notAuthenticated: 'auth-not-authenticated',
-        notAuthorized: 'auth-not-authorized',
-        authenticationCompleted: 'auth-completed',
-        volunteerDetailsCompleted: 'volunteerDetailsCompleted',
+        NOT_AUTHENTICATED: 'auth-not-authenticated',
+        NOT_AUTHORIZED: 'auth-not-authorized',
+        LOGGED_OUT: 'logged-out',
     })
 
     .constant('USER_ROLES', {

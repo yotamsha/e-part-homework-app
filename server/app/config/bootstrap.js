@@ -10,7 +10,9 @@
  */
 
 module.exports.bootstrap = function(cb) {
-
+  if (sails.config.environment === 'development') {
+    process.env.BASE_URL = 'http://test.e-part-hw-app.herokuapp.com:1337/api/v1'
+  }
   // It's very important to trigger this callback method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
   cb();

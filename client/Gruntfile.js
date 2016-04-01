@@ -89,7 +89,7 @@ module.exports = function (grunt) {
                 constants: {
                     ENV: {
                         name: 'production',
-                        apiEndpoint: 'http://test.e-part-hw-app.herokuapp.com:1337'
+                        apiEndpoint: 'http://e-part-hw-app.herokuapp.com'
                     }
                 }
             }

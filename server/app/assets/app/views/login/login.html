@@ -1,5 +1,14 @@
-<div id="container" layout-margin layout-align="space-around center">
-{{"views.home.signup" | translate}}
+<div class="login-page">
+    <md-card class="login-dialog-container">
+        <md-card-title>
+            <div class="app-logo"></div>
+        </md-card-title>
+        <md-card-content layout-align="center center" >
+                <a  href="/api/v1/auths/login">
+                    <div class="fb-btn"></div>
+                </a>
+        </md-card-content>
 
-    <div class="row fb-button" ng-click="fbLogin()"></div>
+    </md-card>
+
 </div>

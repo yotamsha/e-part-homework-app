@@ -12,8 +12,4 @@ angular.module('app.views.login', [])
 
     .controller('loginCtrl', ['$scope','AuthService', function ($scope, AuthService) {
 
-        $scope.fbLogin = function(){
-            AuthService.login("FACEBOOK");
-        };
-
     }]);
