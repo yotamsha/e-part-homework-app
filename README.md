@@ -16,4 +16,4 @@
 * run grunt release in client folder.
 * git subtree push --prefix server/app heroku master
 
-### See live app  - [e-part-hw-app.herokuapp.com] (e-part-hw-app.herokuapp.com)
+### See live app  - [e-part-hw-app.herokuapp.com] (http://e-part-hw-app.herokuapp.com)
